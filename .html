@@ -1,0 +1,2804 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASM School Management System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.1.0/docx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+ <style>
+    #loginSection {
+        display: block;
+        text-align: center;
+        margin: auto;
+        margin-top: 50px;
+        width: 300px; /* Reduce width */
+        padding: 20px; /* Add some padding for spacing */
+        border: 2px solid #2196F3; /* Add a border for a clean look */
+        border-radius: 10px; /* Round the corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+        background-color: #e3f2fd; /* Light blue background */
+    }
+/* Logo Style */
+.logo-img {
+    max-width: 55px; /* Limit the logo size */
+    margin-bottom: 6px; /* Space between logo and text */
+}
+.firework {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, yellow, red);
+    animation: explode 1s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+    }
+    #loginSection input[type="text"],
+    #loginSection input[type="password"] {
+        width: calc(100% - 20px); /* Adjust input width */
+        padding: 8px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #loginSection button {
+        width: 100%; /* Full-width button */
+        padding: 10px;
+        font-size: 14px;
+        background-color: #4CAF50; /* Green color */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #loginSection button:hover {
+        background-color: #45a049; /* Slightly darker green */
+    } 
+  <style>
+/* Button Colors */
+.btn-report { background-color: #4CAF50; color: white; }      /* Green */
+.btn-print { background-color: #FF9800; color: white; }       /* Orange */
+.btn-champions { background-color: #2196F3; color: white; }   /* Blue */
+.btn-ranking { background-color: #9C27B0; color: white; }     /* Purple */
+.btn-performance { background-color: #F44336; color: white; } /* Red */
+.btn-print-champions { background-color: #00BCD4; color: white; } /* Cyan */
+.btn-print-ranking { background-color: #FFC107; color: white; }   /* Amber */
+.btn-print-performance { background-color: #673AB7; color: white; } /* Dark Purple */
+
+button:hover {
+    opacity: 0.9; /* Add a hover effect */
+ }body 
+{
+            font-family: Arial, sans-serif;
+        }
+        .hidden-section {
+            display: none; /* Hide sections by default */
+        }
+        button {
+            margin: 8px;
+            padding: 8px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+button {
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Different colors for each button */
+.btn-red {
+    background-color: #f44336; /* Red */
+}
+.btn-red:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+.btn-blue {
+    background-color: #2196F3; /* Blue */
+}
+.btn-blue:hover {
+    background-color: #1976D2; /* Darker blue on hover */
+}
+
+.btn-green {
+    background-color: #4CAF50; /* Green */
+}
+.btn-green:hover {
+    background-color: #388E3C; /* Darker green on hover */
+}
+
+.btn-orange {
+    background-color: #FF9800; /* Orange */
+}
+.btn-orange:hover {
+    background-color: #F57C00; /* Darker orange on hover */
+}
+
+.btn-purple {
+    background-color: #9C27B0; /* Purple */
+}
+.btn-purple:hover {
+    background-color: #7B1FA2; /* Darker purple on hover */
+}
+
+
+        /* Styling for the Register Learner form */
+        #registerLearnerSection {
+            background-color: #e3f2fd; /* Light blue */
+            border: 2px solid #2196f3; /* Blue border */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        /* Styling for the Junior School Marks Entry Section form */
+        #juniorMarksEntrySection {
+            background-color: #fff8e1; /* Light amber */
+            border: 2px solid #ffc107; /* Amber border */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        /* Styling for the Bulk Report Generation box */
+        #bulkReportGeneration {
+            background-color: #fce4ec; /* Light pink */
+            border: 2px solid #e91e63; /* Pink border */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+} .hidden-section { display: none; /* Hide sections by default */ } button { margin: 10px; padding: 10px 15px; font-size: 14px; cursor: pointer; border-radius: 5px; }
+/* Styling for the Actions For Junior School box */
+        #juniorSchoolActions {
+            background-color: #e8f5e9; /* Light green */
+            border: 2px solid #4CAF50; /* Green border */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px
+        }
+/* Styling for the Marks table box */
+        #markstable {
+            background-color: #e8f5e9; /* Light green */
+            border: 2px solid #4CAF50; /* Green border */
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px
+         }
+        /* Input and button styling for all forms */
+        input[type="text"], input[type="number"], input[type="file"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        .header {
+            font-weight: bold;
+            text-align: center;
+            border: 3px solid #4CAF50;
+            padding: 10px;
+            background-color: #e1f5fe;
+            margin-bottom: 20px;
+        }
+        .section {
+            background-color: #ffffff;
+            border: 3px solid #4CAF50;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+       .report-details, .comment-section {
+            margin: 20px 0;
+            font-weight: bold;
+            background-color: #e1f5fe;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .report-table, .learners-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #e6f7ff;
+        }
+        .report-table th, .report-table td, .learners-table th, .learners-table td {
+            border: 2px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        .report-table td.total-marks {
+            font-weight: bold;
+            border: 2px solid black; /* Add a border to Total Marks */
+        }
+        .stamp {
+            border: 2px solid blue; /* Border for stamp */
+            color: blue; /* Text color for stamp */
+            width: 200px; /* Adjusted width for visibility */
+            height: 70px; /* Adjusted height for visibility */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+            text-align: center;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+        button:nth-of-type(1) {
+            background-color: #2196F3; /* Color for the first button */
+        }
+        button:nth-of-type(2) {
+            background-color: #FF9800; /* Color for the second button */
+        }
+        button:nth-of-type(3) {
+            background-color: #F44336; /* Color for the third button */
+        }
+        button {
+            background-color: #4CAF50; /* Default color for buttons */
+        }
+        button:hover {
+            background-color: #45a049; /* Hover effect */
+
+        }
+        @media print {
+            .section {
+                page-break-after: always;
+        }
+<style>
+    .total-marks {
+        font-weight: bold;
+        border: 3px solid black; /* Add a border to Total Marks */
+        padding: 8px;
+        margin-bottom: 20px; /* Adds spacing below the total marks */
+    }
+    
+    .comment-section {
+        margin-top: 20px; /* Adds space above the comments */
+        margin-bottom: 20px; /* Adds space below the comments */
+    }
+
+    .signature-section {
+        margin-top: 30px; /* Adds extra space for the signatures */
+    }
+    </style>
+</head>
+<body>
+
+ 
+   <div id="loginSection" style="display: block; text-align: center; margin-top: 30px;">
+   <h1>RASM School Management System</h1>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required><br><br>
+        <input type="password" id="password" placeholder="Password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+    <div id="loginError" style="color: red; display: none;">Invalid username or password</div>
+    <br>
+    <button onclick="showResetPasswordForm()">Forgot Password?</button>
+</div>
+<div id="resetPasswordSection" style="display: none; text-align: center; margin-top: 50px;">
+    <h2>Reset Password</h2>
+    <form id="resetPasswordForm">
+        <input type="text" id="resetUsername" placeholder="Username" required><br><br>
+        <input type="text" id="securityAnswer" placeholder="Your favorite color?" required><br><br>
+        <input type="password" id="newPassword" placeholder="New Password" required><br><br>
+        <input type="password" id="confirmPassword" placeholder="Confirm New Password" required><br><br>
+        <button type="submit">Reset Password</button>
+    </form>
+    <button onclick="showLoginForm()">Back to Login</button>
+    <div id="resetError" style="color: red; display: none;">Error resetting password</div>
+    <div id="resetSuccess" style="color: green; display: none;">Password reset successfully!</div>
+</div>
+
+
+   <!-- Main Content -->
+ <div id="mainContent" style="display: none;">
+<!-- Header Section -->
+<header class="header">
+    <div class="logo">
+        <img src="file:///C:/Users/Student-532A48/Desktop/g.png" class="logo-img">
+    </div>
+    <div class="header-text">
+        <h1>Welcome To Rasm School Automation Management System</h1>
+        <p>Your gateway to smooth and efficient school management</p>
+    </div>
+</header>
+
+<button class="btn-cyan" onclick="toggleChampionsForm()">Menu</button>
+   
+ <button class="btn-pink" onclick="toggleRegisterLearner()">Register Learner</button>
+
+ <button class="btn-green" onclick="toggleRegisteredLearners()">Registered Learners</button>
+  
+ <button class="btn-yellow" onclick="toggleJuniorMarksEntry()">Marks Entry</button>
+
+ <button class="btn-blue" onclick="toggleMarksTable()">Marks Table</button>
+ <button class="btn-orange" onclick="toggleJuniorSchoolActions()">Junior School Actions</button>
+
+<button class="btn-purple" onclick="toggleBulkReportGeneration()">Bulk Report Generation</button>
+
+  <button class="btn-red" onclick="viewArchives()">View Archives</button>
+  
+
+<button id="logoutButton" onclick="logout()" style="display: ">Logout</button>
+
+    </div>
+<div id="registerLearnerSection" style="display: none;">
+        <h2>Register Learner</h2>
+        <form id="learnerForm">
+            Name: <input type="text" id="learnerName" required><br>
+            Gender: <input type="text" id="learnerGender" required><br>
+            Grade: <input type="text" id="learnerGrade" required><br>
+            Age: <input type="number" id="learnerAge" required><br>
+            Parent Phone No: <input type="text" id="learnerPhone" required><br>
+            Admission Number: <input type="text" id="admissionNumber" required><br>
+            Photo: <input type="file" id="learnerPhoto" accept="image/*" required><br>
+            <button type="submit">Add Learner</button>
+        </form>
+    </div>
+<div id="fireworks-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000;"></div>
+   </div>
+<div id="registeredLearnersBox" style="display: none;">
+        <h2>Registered Learners</h2>
+        <input type="text" id="searchLearner" onkeyup="searchLearner()" placeholder="Search for learner">
+        <button onclick="printRegisteredLearners()">Print Registered Learners</button>
+        <button onclick="groupLearnersByGrade()">Group by Grade</button>
+        <button onclick="promoteLearners()">Promote Learners to Next Grade</button>
+<button onclick="groupLearnersByGender()">Group by Gender</button>
+<button onclick="printGroupedByGender()">Print Grouped by Gender</button>
+<div id="groupedByGender"></div>
+        <div id="groupedLearners"></div>
+        <table class="learners-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Grade</th>
+                    <th>Age</th>
+                    <th>Parent Phone No</th>
+                    <th>Admission Number</th>
+                     <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody id="learnersList"></tbody>
+        </table>
+    </div>
+<div id="report"></div>
+
+<div id="juniorMarksEntrySection" class="hidden-section">
+  
+    <h2>Junior School Marks Entry Section </h2>
+    <form id="marksForm">
+        Learner: 
+        <select id="learnerSelect"></select><br>
+        Grade: 
+        <input type="text" id="marksGrade" required><br> <!-- Added Grade input field -->
+        <div>
+            Eng: <input type="number" id="english" required><br>
+            Math: <input type="number" id="math" required><br>
+            Pre-technical Studies: <input type="number" id="preTech" required><br>
+            Kiswahili: <input type="number" id="kiswahili" required><br>
+            Integrated Science: <input type="number" id="science" required><br>
+            Social Studies: <input type="number" id="social" required><br>
+            Agriculture: <input type="number" id="agriculture" required><br>
+            Religious Education: <input type="number" id="religion" required><br>
+            Creative Art: <input type="number" id="art" required><br>
+        </div>
+        <button type="submit">Submit Marks</button>
+    </form>
+</div>
+
+<div id="marksTableSection" class="hidden-section">
+        <h2>Marks Table</h2>
+        <input type="text" id="searchMarks" onkeyup="searchMarks()" placeholder="Search Marks">
+        <button onclick="printMarksTable()">Print Marks Table</button>
+        <button onclick="saveMarks()">Save Marks</button>
+        <table border="1" class="report-table">
+    <thead>
+        <tr>
+            <th>No.</th> <!-- Serial Number Column -->
+            <th>Learner</th>
+            <th>Grade</th>
+            <th>Eng</th><th>Lev</th>
+            <th>Math</th><th>Lev</th>
+            <th>Pre-Tech</th><th>Lev</th>
+            <th>Kiswa</th><th>Lev</th>
+            <th>Scie</th><th>Lev</th>
+            <th>Social</th><th>Lev</th>
+            <th>Agric</th><th>Lev</th>
+            <th>Cre</th><th>Lev</th>
+            <th>C/Art</th><th>Lev</th>
+            <th>Total Marks</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="marksList"></tbody>
+</table>
+
+
+    </div>
+<!-- Archived Marks Section -->
+<div id="archivesSection" class="hidden-section">
+<button id="viewArchivedDataBtn" onclick="viewArchivedData()">View Archived Deleted Data</button>
+<button id="clearArchivedDataBtn" onclick="clearArchivedData()">Clear Archived Data</button>
+    <h2>Archived Marks</h2>
+    <div id="archivedMarksList"></div>
+<button onclick="combineMeritListsByGrade()">Combine Merit Lists for Same Grade</button>
+<div id="combinedMeritLists"></div>
+ <button onclick="printCombinedMeritList()">Print Combined Merit List</button>
+</div>
+
+<div id="juniorSchoolActions" class="hidden-section">
+    <h2>Actions For Junior School</h2>
+    <button class="btn-report" onclick="generateReportForLearner()">Generate Report</button>
+    <button class="btn-print" onclick="printAssessmentReport()">Print Report</button>
+    <button class="btn-champions" onclick="showSubjectChampions()">Subject Champions</button>
+    <button class="btn-ranking" onclick="showSubjectRanking()">Subject Ranking</button>
+    <button class="btn-performance" onclick="showSubjectPerformance()">Subject Performance</button>
+    <button class="btn-print-champions" onclick="printSubjectChampions()">Print Subject Champions</button>
+    <button class="btn-print-ranking" onclick="printSubjectRanking()">Print Subject Ranking</button>
+<button onclick="generateSubjectDeviationReport()">Generate Subject Deviation Report</button>
+
+    <button class="btn-print-performance" onclick="printSubjectPerformance()">Print Subject Performance</button>
+</div>
+
+ <div id="bulkReportGeneration" class="hidden-section">
+        <h2>Bulk Report Generation</h2>
+        <label for="bulkGradeSelect">Select Grade:</label>
+        <select id="bulkGradeSelect"></select>
+        <button onclick="generateBulkReports()">Generate Bulk Reports</button>
+    </div>
+
+    <div id="report"></div>
+
+  </div>
+<div id="championsForm" style="display: none;">
+    <div>
+        School: <input type="text" id="schoolName" placeholder="Enter School Name"><br>
+        Grade: <input type="text" id="gradeLevel" placeholder="Enter Grade"><br>
+        Year: <input type="text" id="year" placeholder="Enter Year"><br>
+        Term: <input type="text" id="term" placeholder="Enter Term"><br>
+          </div>
+<!-- Footer Section -->
+<footer id="footer" style="display: none; background-color: #2196F3; color: white; padding: 5px 0; text-align: center;">
+    <p>&copy; 2025 Nachu Junior High School | All Rights Reserved</p>
+</footer>
+    </div>
+
+<script>
+    // ... (Other existing JavaScript code)
+
+    // Function to update the grade field based on the selected learner
+    learnerSelect.addEventListener('change', function() {
+        const selectedLearnerName = this.value;
+        const selectedLearner = learners.find(learner => learner.name === selectedLearnerName);
+        if (selectedLearner) {
+            document.getElementById('marksGrade').value = selectedLearner.grade; // Set the grade field based on the selected learner
+        } else {
+            document.getElementById('marksGrade').value = ''; // Clear the grade field if no learner is selected
+        }
+    });
+</script>
+
+ 
+<!-- Save Marks Button and Success Message -->
+
+<div id="saveSuccessMessage" style="display: none; color: green; font-weight: bold;">Thankyou Sir/Madam Marks saved successfully!</div>
+
+<!-- Archives Button -->
+
+    <script>
+        const learnersList = document.getElementById("learnersList");
+        const marksList = document.getElementById("marksList");
+        const learnerSelect = document.getElementById("learnerSelect");
+        const bulkGradeSelect = document.getElementById("bulkGradeSelect");
+        const groupedLearners = document.getElementById("groupedLearners");
+        let learners = [
+            { photo:"file:///C:/Users/Student-532A48/Desktop/grade%207%20passports/WIN_20240801_11_43_00_Pro.jpg",name:"Sironga", grade: "7", age: 12, phone: "123-456-7890", admissionNumber: "A123" },
+            { name: "Bob Johnson", grade: "7", age: 12, phone: "234-567-8901", admissionNumber: "A124" },
+                    ];
+
+        let marks = [];
+
+        // Load learners from Local Storage
+        window.onload = function() {
+            const storedLearners = JSON.parse(localStorage.getItem('learners')) || learners; // Load from localStorage or use initialized data
+            learners = storedLearners;
+            updateLearnersTable();
+            updateLearnerSelect();
+            updateBulkGradeSelect();
+            populateLearnerSuggestions();
+        };
+document.getElementById("learnerForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Capture learner details
+    const photoFile = document.getElementById("learnerPhoto").files[0];
+    const learner = {
+        name: document.getElementById("learnerName").value,
+        gender: document.getElementById("learnerGender").value,
+        grade: document.getElementById("learnerGrade").value,
+        age: document.getElementById("learnerAge").value,
+        phone: document.getElementById("learnerPhone").value,
+        admissionNumber: document.getElementById("admissionNumber").value,
+        photo: photoFile ? URL.createObjectURL(photoFile) : null,
+    };
+
+    // Check for duplicate admission number
+    if (isDuplicateLearner(learner)) {
+        alert("Learner with this admission number already exists.");
+        return;
+    }
+
+    // Add the learner to the learners array
+    learners.push(learner);
+
+    // Save learners to local storage
+    localStorage.setItem("learners", JSON.stringify(learners));
+
+    // Update the table and form
+    updateLearnersTable();
+    updateLearnerSelect();
+    this.reset();
+
+    // Display success message
+    const successMessage = document.createElement("div");
+    successMessage.textContent = "Learner registered successfully!";
+    successMessage.style.color = "green";
+    successMessage.style.fontWeight = "bold";
+    successMessage.style.marginTop = "10px";
+
+    // Append the message to the form and remove it after 3 seconds
+    const formContainer = document.getElementById("registerLearnerSection");
+    formContainer.appendChild(successMessage);
+    setTimeout(() => successMessage.remove(), 3000);
+});
+
+// Helper function to check for duplicates
+function isDuplicateLearner(learner) {
+    return learners.some(l => l.admissionNumber === learner.admissionNumber);
+        }
+          // Hardcoded credentials (for demonstration purposes)
+        const validUsername = "Nachu254";
+        const validPassword = "Nm643PpQ@";
+
+        // Login form submission
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent form from refreshing the page
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === validUsername && password === validPassword) {
+                // Hide login section and show main content
+                document.getElementById("loginSection").style.display = "none";
+                document.getElementById("mainContent").style.display = "block";
+            } else {
+                // Show error message
+                document.getElementById("loginError").style.display = "block";
+            }
+        });
+        document.getElementById("marksForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const selectedLearner = learnerSelect.value;
+            const scores = [
+                parseInt(document.getElementById("english").value),
+                parseInt(document.getElementById("math").value),
+                parseInt(document.getElementById("preTech").value),
+                parseInt(document.getElementById("kiswahili").value),
+                parseInt(document.getElementById("science").value),
+                parseInt(document.getElementById("social").value),
+                parseInt(document.getElementById("agriculture").value),
+                parseInt(document.getElementById("religion").value),
+                parseInt(document.getElementById("art").value)
+            ];
+
+            if (scores.some(score => score < 0 || score > 100)) {
+                alert("Please enter scores between 0 and 100.");
+                return;
+            }
+
+            const totalMarks = scores.reduce((acc, score) => acc + score, 0);
+            const grade = learners.find(l => l.name === selectedLearner).grade;
+            const marksEntry = { learner: selectedLearner, grade, scores, totalMarks };
+            marks.push(marksEntry);
+            updateMarksTable();
+            this.reset();
+        });
+function updateLearnersTable() {
+    learnersList.innerHTML = learners.map((learner, index) => `
+        <tr>
+            <td>${index + 1}</td>
+            <td><img src="${learner.photo}" alt="Photo" width="50" height="50"></td>
+            <td contenteditable="true">${learner.name}</td>
+            <td contenteditable="true">${learner.gender}</td>
+            <td contenteditable="true">${learner.grade}</td>
+            <td contenteditable="true">${learner.age}</td>
+            <td contenteditable="true">${learner.phone}</td>
+            <td contenteditable="true">${learner.admissionNumber}</td>
+            <td><button onclick="removeLearner(${index})">Remove</button></td>
+            <td><button onclick="saveLearners()">Save Changes</button>
+        </tr>
+    `).join("");
+    updateLearnerSelect();
+        
+        }
+function toggleChampionsForm() {
+    const form = document.getElementById("championsForm");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+}
+document.getElementById("saveMarksButton").addEventListener("click", function() {
+    // Prompt the user to enter term and year
+    const term = prompt("Enter the name of the term (e.g., 'Term 1'):");
+    const year = prompt("Enter the year (e.g., '2024'):");
+
+    if (!term || !year) {
+        alert("Term and year are required. Marks not saved.");
+        return;
+    }
+
+    // Retrieve the marks table data
+    const marksTable = document.getElementById("marksList");
+    const rows = marksTable.getElementsByTagName("tr");
+    const marksData = [];
+
+    // Collect marks data from the table
+    for (let i = 1; i < rows.length; i++) {  // Skipping the header row
+        const cells = rows[i].getElementsByTagName("td");
+        const learnerName = cells[0].textContent;
+        const grade = cells[1].textContent;
+        const scores = Array.from(cells).slice(2, 10).map(cell => parseInt(cell.textContent));
+        const totalMarks = parseInt(cells[10].textContent);
+
+        marksData.push({
+            learnerName,
+            grade,
+            scores,
+            totalMarks
+        });
+    }
+
+    // Create an object to store term, year, and marks data
+    const archivedMarks = {
+        term,
+        year,
+        marks: marksData
+    };
+
+    // Save the archived marks data to localStorage (or another storage method)
+    let allArchivedMarks = JSON.parse(localStorage.getItem("archivedMarks")) || [];
+    allArchivedMarks.push(archivedMarks);
+    localStorage.setItem("archivedMarks", JSON.stringify(allArchivedMarks));
+
+    alert("Marks saved successfully with term and year.");
+});
+
+
+function generateSubjectDeviationReport() {
+    // Retrieve archived marks from localStorage
+    const archivedMarks = JSON.parse(localStorage.getItem("archivedMarks")) || [];
+
+    if (archivedMarks.length === 0) {
+        alert("No archived marks available for deviation calculation.");
+        return;
+    }
+
+    // Group data by grade and subjects
+    const groupedData = archivedMarks.reduce((acc, mark) => {
+        if (!acc[mark.grade]) acc[mark.grade] = [];
+        acc[mark.grade].push(mark);
+        return acc;
+    }, {});
+
+    // HTML to display deviation report
+    let reportHtml = '';
+
+    // Iterate through each grade
+    for (const grade in groupedData) {
+        const marks = groupedData[grade];
+        const subjectSums = Array(9).fill(0); // Assuming 9 subjects
+        const subjectCounts = Array(9).fill(0);
+        const subjectMeans = Array(9).fill(0);
+        const subjectVariances = Array(9).fill(0);
+        const subjectDeviations = Array(9).fill(0);
+
+        // Calculate mean scores for each subject
+        marks.forEach(mark => {
+            mark.scores.forEach((score, index) => {
+                subjectSums[index] += score;
+                subjectCounts[index]++;
+            });
+        });
+        
+        // Calculate mean for each subject
+        subjectMeans.forEach((_, index) => {
+            subjectMeans[index] = subjectSums[index] / (subjectCounts[index] || 1);
+        });
+
+        // Calculate variance for each subject
+        marks.forEach(mark => {
+            mark.scores.forEach((score, index) => {
+                const difference = score - subjectMeans[index];
+                subjectVariances[index] += difference * difference;
+            });
+        });
+
+        // Calculate standard deviation for each subject
+        subjectDeviations.forEach((_, index) => {
+            subjectDeviations[index] = Math.sqrt(subjectVariances[index] / (subjectCounts[index] || 1)).toFixed(2);
+        });
+
+        // Create a table for the current grade's deviation report
+        reportHtml += `<h3>Subject Deviation Report for Grade ${grade}</h3>`;
+        reportHtml += `
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Mean Score</th>
+                        <th>Standard Deviation</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        // Display mean and standard deviation for each subject
+        const subjectNames = [
+            'English', 'Mathematics', 'Pre-Tech',
+            'Kiswahili', 'Integrated Science', 'Social Studies',
+            'Agriculture', 'Religious Education', 'Creative Art'
+        ];
+
+        subjectNames.forEach((subject, index) => {
+            reportHtml += `
+                <tr>
+                    <td>${subject}</td>
+                    <td>${subjectMeans[index].toFixed(2)}</td>
+                    <td>${subjectDeviations[index]}</td>
+                </tr>
+            `;
+        });
+
+        reportHtml += '</tbody></table><hr>';
+    }
+
+    // Display the report in the designated area
+    document.getElementById("report").innerHTML = reportHtml;
+
+}
+function startFireworks() {
+    const fireworksOverlay = document.getElementById('fireworks-overlay');
+    fireworksOverlay.style.display = 'block';
+
+    // Function to create a firework
+    function createFirework() {
+        const firework = document.createElement('div');
+        firework.className = 'firework';
+        const size = Math.random() * 10 + 10;
+        firework.style.width = `${size}px`;
+        firework.style.height = `${size}px`;
+        firework.style.left = `${Math.random() * 100}vw`;
+        firework.style.top = `${Math.random() * 100}vh`;
+        firework.style.animationDuration = `${Math.random() * 1 + 0.5}s`;
+        fireworksOverlay.appendChild(firework);
+
+        // Remove the firework after animation ends
+        setTimeout(() => {
+            firework.remove();
+        }, 1000);
+    }
+
+    // Generate fireworks every 200ms
+    const interval = setInterval(createFirework, 200);
+
+    // Stop fireworks after 30 seconds
+    setTimeout(() => {
+        clearInterval(interval);
+        fireworksOverlay.style.display = 'none';
+        fireworksOverlay.innerHTML = ''; // Clear all fireworks
+    }, 30000); // 30 seconds
+}
+function combineMeritListsByGrade() {
+    // Retrieve archived marks from localStorage
+    const archivedMarks = JSON.parse(localStorage.getItem("archivedMarks")) || [];
+    
+    // Ensure that learners' data is also available
+    const storedLearners = JSON.parse(localStorage.getItem('learners')) || [];
+    
+    // Get all unique grades present in the archived data (e.g., 7A, 7B, 8A, 8B)
+    const uniqueGrades = [...new Set(archivedMarks.map(mark => mark.grade.slice(0, 1)))];
+
+    // HTML to hold combined merit lists for all grades
+    let allCombinedHtml = '';
+
+    // Loop through each unique grade (e.g., 7, 8, 9)
+    uniqueGrades.forEach(gradeNumber => {
+        // Filter streams for the current grade (e.g., 7A, 7B for Grade 7)
+        const gradeStreams = archivedMarks.filter(mark => mark.grade.startsWith(gradeNumber));
+
+        // If there are more than one stream for the current grade, combine them
+        if (gradeStreams.length > 1) {
+            // Combine all streams for the current grade
+            const combinedMeritList = [...gradeStreams];
+
+            // Sort the combined list by total marks in descending order
+            combinedMeritList.sort((a, b) => b.totalMarks - a.totalMarks);
+
+            // Create HTML to display the combined merit list for the current grade
+            let combinedHtml = `
+                <h3>Combined Merit List for Grade ${gradeNumber}</h3>
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Name</th>
+                            <th>Grade</th>
+                            <th>Eng</th><th>Lev</th>
+                            <th>Math</th><th>Lev</th>
+                            <th>Pre-Tech</th><th>Lev</th>
+                            <th>Kiswahili</th><th>Lev</th>
+                            <th>Science</th><th>Lev</th>
+                            <th>Social</th><th>Lev</th>
+                            <th>Agriculture</th><th>Lev</th>
+                            <th>CRE</th><th>Lev</th>
+                            <th>Creative Art</th><th>Lev</th>
+                            <th>Total Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            // Populate the combined merit list for the current grade
+            combinedMeritList.forEach((learnerData, index) => {
+                // Retrieve the full learner information using the learner's name or identifier
+                const learnerInfo = storedLearners.find(l => l.name === learnerData.learner);
+
+                // Check if learnerInfo exists, otherwise handle the missing data gracefully
+                const learnerName = learnerInfo ? learnerInfo.name : "Name Missing";
+                const learnerGrade = learnerInfo ? learnerInfo.grade : "Grade N/A";
+                const scores = learnerData.scores || [];
+                const totalMarks = learnerData.totalMarks || 0;
+
+                // Add learner's data to the table
+                combinedHtml += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${learnerName}</td>
+                        <td>${learnerGrade}</td>
+                        ${scores.map(score => {
+                            const numericScore = Number(score) || 0;
+                            return `<td>${numericScore}</td><td>${getLevel(numericScore)}</td>`;
+                        }).join('')}
+                        <td style="font-weight: bold;">${totalMarks}</td>
+                    </tr>
+                `;
+            });
+
+            // Calculate subject totals and averages for the current grade
+            const subjectTotals = Array(9).fill(0);
+            let totalMarksSum = 0;
+            combinedMeritList.forEach(learner => {
+                learner.scores.forEach((score, index) => {
+                    subjectTotals[index] += Number(score) || 0;
+                });
+                totalMarksSum += learner.totalMarks || 0;
+            });
+
+            const averages = subjectTotals.map(total => (total / combinedMeritList.length).toFixed(2));
+            const overallAverage = (totalMarksSum / combinedMeritList.length).toFixed(2);
+
+            // Add the total and average rows
+            combinedHtml += `
+                <tr>
+                    <td colspan="3" style="font-weight: bold;">Total</td>
+                    ${subjectTotals.map(total => `<td style="font-weight: bold;">${total}</td><td></td>`).join('')}
+                    <td style="font-weight: bold;">${totalMarksSum}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="font-weight: bold;">Average</td>
+                    ${averages.map(avg => `<td style="font-weight: bold;">${avg}</td><td></td>`).join('')}
+                    <td style="font-weight: bold;">${overallAverage}</td>
+                </tr>
+            `;
+
+            combinedHtml += "</tbody></table>";
+
+            // Append the combined HTML for the current grade to the overall content
+            allCombinedHtml += combinedHtml;
+        }
+    });
+
+    // Display all combined merit lists for all grades
+    document.getElementById("combinedMeritLists").innerHTML = allCombinedHtml;
+
+    // Optionally, save this combined list back to localStorage if needed
+    localStorage.setItem("combinedMeritLists", JSON.stringify(allCombinedHtml));
+}
+function printCombinedMeritList() {
+    // Retrieve information from the subject champions form
+    const schoolName = document.getElementById('schoolName') ? document.getElementById('schoolName').value : "School Name Not Provided";
+    const grade = document.getElementById('grade') ? document.getElementById('grade').value : "Grade Not Provided";
+    const term = document.getElementById('term') ? document.getElementById('term').value : "Term Not Provided";
+    const year = document.getElementById('year') ? document.getElementById('year').value : "Year Not Provided";
+
+    // Get the combined merit list content
+    const combinedContentElement = document.getElementById("combinedMeritLists");
+
+    // Check if the combined merit list element exists
+    if (!combinedContentElement) {
+        alert("The combined merit list content is not available. Please make sure it's generated.");
+        return;
+    }
+
+    // Check if the combined content has any HTML to print
+    const combinedContent = combinedContentElement.innerHTML;
+    if (!combinedContent || combinedContent.trim() === "") {
+        alert("No combined merit list to print.");
+        return;
+    }
+
+    // Open a new window for printing
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) {
+        alert("Pop-up blocked. Please enable pop-ups for this site.");
+        return;
+    }
+
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Combined Merit List - ${schoolName}</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 20px;
+                    }
+                    h1, h2, h3 {
+                        text-align: center;
+                        margin: 10px 0;
+                    }
+                    .report-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                    }
+                    .report-table th, .report-table td {
+                        border: 1px solid black;
+                        padding: 8px;
+                        text-align: center;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>${schoolName}</h1>
+                <h2>Grade: ${grade}</h2>
+                <h3>Term: ${term}, Year: ${year}</h3>
+                <div class="report-table">
+                    ${combinedContent}
+                </div>
+            </body>
+        </html>
+    `);
+
+    // Ensure the document is fully loaded before printing
+    printWindow.document.close();
+    printWindow.onload = function () {
+        printWindow.print();
+        printWindow.close(); // Close the window after printing
+    };
+}
+
+function logout() {
+    // Hide main content and footer
+    document.getElementById("mainContent").style.display = "none";
+    document.getElementById("footer").style.display = "none";
+    
+    // Show login section
+    document.getElementById("loginSection").style.display = "block";
+
+
+    // Clear any session or user data if necessary
+    // For example, if you're storing user info in localStorage, you can clear it:
+    localStorage.removeItem("userData"); // Remove stored user data (if any)
+
+    // Optionally, reset login form for next use
+    document.getElementById("loginForm").reset();
+}
+
+// Example: Trigger fireworks when showing champions
+function showSubjectChampions() {
+    // Your existing logic for displaying champions
+    const champions = marks.reduce((acc, mark) => {
+        mark.scores.forEach((score, index) => {
+            const subject = ['English', 'Mathematics', 'Pre-Technical Studies', 'Kiswahili', 'Integrated Science', 'Social Studies', 'Agriculture', 'Religious Education', 'Creative Art'][index];
+            if (!acc[subject] || score > acc[subject].score) {
+                acc[subject] = { name: mark.learner, score };
+            }
+        });
+        return acc;
+    }, {});
+
+    let championsHtml = '<h3>Subject Champions</h3><table class="learners-table"><thead><tr><th>Subject</th><th>Champion</th><th>Score</th></tr></thead><tbody>';
+    for (const subject in champions) {
+        championsHtml += `
+            <tr>
+                <td>${subject}</td>
+                <td>${champions[subject].name}</td>
+                <td>${champions[subject].score}</td>
+            </tr>
+        `;
+    }
+    championsHtml += '</tbody></table>';
+
+    const reportDiv = document.getElementById("report");
+    reportDiv.innerHTML = championsHtml;
+
+    // Start fireworks
+    startFireworks();
+}
+
+function groupLearnersByGender() {
+    const groupedByGender = learners.reduce((groups, learner) => {
+        if (!groups[learner.gender]) {
+            groups[learner.gender] = [];
+        }
+        groups[learner.gender].push(learner);
+        return groups;
+    }, {});
+
+    let genderHtml = '';
+    for (const gender in groupedByGender) {
+        genderHtml += `
+            <h3>${gender}</h3>
+            <table class="learners-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Grade</th>
+                        <th>Age</th>
+                        <th>Parent Phone No</th>
+                        <th>Admission Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${groupedByGender[gender].map((learner, index) => `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td><img src="${learner.photo}" alt="Photo" width="50" height="50"></td>
+                            <td>${learner.name}</td>
+                            <td>${learner.gender}</td>
+                            <td>${learner.grade}</td>
+                            <td>${learner.age}</td>
+                            <td>${learner.phone}</td>
+                            <td>${learner.admissionNumber}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+    }
+
+    document.getElementById('groupedByGender').innerHTML = genderHtml;
+}
+function printGroupedByGender() {
+    const groupedContent = document.getElementById("groupedByGender").innerHTML;
+    
+    if (!groupedContent) {
+        alert("No learners to print.");
+        return;
+    }
+
+    const printWindow = window.open("", "_blank");
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Grouped Learners by Gender</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+                    .learners-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+                    .learners-table th, .learners-table td {
+                        border: 1px solid black;
+                        padding: 8px;
+                        text-align: center;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Grouped Learners by Gender</h1>
+                ${groupedContent}
+            </body>
+        </html>
+    `);
+    printWindow.document.close();  // Close the document to ensure it's fully loaded before printing
+    printWindow.print();  // Print the document
+}
+
+// Function to print a specific table by grade
+function printArchivedTable(grade) {
+    const tableHtml = document.getElementById(`archivedTable-${grade}`).outerHTML;
+
+// Retrieve information from the champions form fields
+    const schoolName = document.getElementById("schoolName").value || "School Name";
+    const gradeLevel = document.getElementById("gradeLevel").value || "Grade";
+    const year = document.getElementById("year").value || "Year";
+    const term = document.getElementById("term").value || "Term";
+
+    const printWindow = window.open("", "_blank");
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Archived Marks for Grade ${grade}</title>
+                <style>
+                    body { font-family: Arial, sans-serif; }
+                    .report-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin: 20px 0;
+                    }
+                    .report-table th, .report-table td {
+                        border: 2px solid black;
+                        padding: 8px;
+                        text-align: center;
+                    }
+                </style>
+            </head>
+ </div>
+                  <p>School: ${schoolName}</p>
+                    <p>Grade: ${gradeLevel}</p>
+                    <p>Year: ${year}</p>
+                    <p>Term: ${term}</p>
+                </div>
+            <body>
+                ${tableHtml}
+            </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+}
+
+function saveLearners() {
+    const rows = learnersList.getElementsByTagName('tr');
+    learners = Array.from(rows).map((row, index) => {
+        const cells = row.getElementsByTagName('td');
+        return {
+            photo: cells[1].imageContent,
+            name: cells[2].textContent,
+            gender: cells[3].textContent,
+            grade: cells[4].textContent,
+            age: cells[5].textContent,
+            phone: cells[6].textContent,
+            admissionNumber: cells[7].textContent
+        };
+    });
+
+    // Save updated learners list to local storage
+    localStorage.setItem('learners', JSON.stringify(learners));
+    alert("Changes saved successfully!");
+}
+function groupLearnersByGrade() {
+    const groupedLearners = learners.reduce((groups, learner) => {
+        if (!groups[learner.grade]) {
+            groups[learner.grade] = [];
+        }
+        groups[learner.grade].push(learner);
+        return groups;
+    }, {});
+
+    let groupedHtml = '';
+    for (const grade in groupedLearners) {
+        groupedHtml += `
+            <h3>Grade: ${grade}</h3>
+            <button onclick="saveGroupedChanges('${grade}')">Save Changes</button>
+            <button onclick="printGroupedTable('${grade}')">Print Table</button>
+            <table class="learners-table" id="groupedTable-${grade}">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Grade</th>
+                        <th>Age</th>
+                        <th>Parent Phone No</th>
+                        <th>Admission Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${groupedLearners[grade].map((learner, index) => `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td><img src="${learner.photo}" alt="Photo" width="50" height="50"></td>
+                            <td contenteditable="true">${learner.name}</td>
+                          <td contenteditable="true">${learner.gender}</td>
+                            <td contenteditable="true">${learner.grade}</td>
+                            <td contenteditable="true">${learner.age}</td>
+                            <td contenteditable="true">${learner.phone}</td>
+                            <td contenteditable="true">${learner.admissionNumber}</td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+    }
+
+    document.getElementById('groupedLearners').innerHTML = groupedHtml;
+
+}
+// Predefined security data (for demonstration purposes)
+const userCredentials = {
+    username: "Nachu254",
+    password: "Nm643PpQ@", // Current password
+    securityAnswer: "blue" // Security question answer
+};
+
+// Show reset password form
+function showResetPasswordForm() {
+    document.getElementById("loginSection").style.display = "none";
+    document.getElementById("resetPasswordSection").style.display = "block";
+}
+// Login form submission
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent form from refreshing the page
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === validUsername && password === validPassword) {
+        // Hide login section and show main content
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+
+        // Show footer after successful login
+        document.getElementById("footer").style.display = "block";
+    } else {
+        // Show error message
+        document.getElementById("loginError").style.display = "block";
+    }
+});
+
+// Handle password reset
+document.getElementById("resetPasswordForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById("resetUsername").value;
+    const securityAnswer = document.getElementById("securityAnswer").value.toLowerCase();
+    const newPassword = document.getElementById("newPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    // Check username and security question answer
+    if (username === userCredentials.username && securityAnswer === userCredentials.securityAnswer) {
+        if (newPassword === confirmPassword) {
+            // Update the password
+            userCredentials.password = newPassword;
+
+            // Show success message
+            document.getElementById("resetSuccess").style.display = "block";
+            document.getElementById("resetError").style.display = "none";
+
+            // Reset form and navigate back to login
+            setTimeout(() => {
+                document.getElementById("resetPasswordForm").reset();
+                showLoginForm();
+            }, 2000);
+        } else {
+            // Passwords do not match
+            document.getElementById("resetError").textContent = "Passwords do not match.";
+            document.getElementById("resetError").style.display = "block";
+        }
+    } else {
+        // Invalid username or security answer
+        document.getElementById("resetError").textContent = "Invalid username or security answer.";
+        document.getElementById("resetError").style.display = "block";
+    }
+});
+function printGroupedTable(grade) {
+    const table = document.getElementById(`groupedTable-${grade}`).outerHTML;
+
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Grouped Learners for Grade ${grade}</title>
+                <style>
+                    body { font-family: Arial, sans-serif; }
+                    .learners-table { width: 100%; border-collapse: collapse; }
+                    .learners-table th, .learners-table td {
+                        border: 2px solid black; padding: 10px; text-align: center;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Grouped Learners for Grade ${grade}</h1>
+                ${table}
+            </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+}
+function printCombinedMeritList() {
+    // Retrieve details from the Subject Champions form
+    const schoolName = document.getElementById('schoolName').value || "School Name Not Provided";
+    const grade = document.getElementById('gradeLevel').value || "Grade Not Provided";
+    const term = document.getElementById('term').value || "Term Not Provided";
+    const year = document.getElementById('year').value || "Year Not Provided";
+
+    // Ask the user for grades they want to include in the print
+    const gradesInput = prompt("Enter the grades you want to print (comma-separated, e.g., 7, 8):");
+    if (!gradesInput) {
+        alert("No grades entered. Printing canceled.");
+        return;
+    }
+
+    const selectedGrades = gradesInput.split(',').map(grade => grade.trim());
+
+    // Get the combined merit list content
+    const combinedContentElement = document.getElementById("combinedMeritLists");
+
+    if (!combinedContentElement || combinedContentElement.innerHTML.trim() === "") {
+        alert("No combined merit list to print.");
+        return;
+    }
+
+    // Filter the combined content by selected grades
+    const combinedHtml = Array.from(combinedContentElement.querySelectorAll("h3, table"))
+        .filter(element => {
+            if (element.tagName === "H3") {
+                return selectedGrades.some(grade => element.textContent.includes(`Grade ${grade}`));
+            }
+            return true;
+        })
+        .map(element => element.outerHTML)
+        .join("");
+
+    if (!combinedHtml) {
+        alert("No merit lists found for the selected grades.");
+        return;
+    }
+
+    // Open a new window for printing with headers
+    const printWindow = window.open("", "_blank");
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Combined Merit List - ${schoolName}</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 20px;
+                    }
+                    h1, h2, h3 {
+                        text-align: center;
+                        margin: 10px 0;
+                    }
+                    .report-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 20px;
+                    }
+                    .report-table th, .report-table td {
+                        border: 1px solid black;
+                        padding: 8px;
+                        text-align: center;
+                    }
+                    .header-info {
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="header-info">
+                    <p>School: ${schoolName}</p>
+                    <p>Grade Level: ${grade}</p>
+                    <p>Term: ${term}</p>
+                    <p>Year: ${year}</p>
+                </div>
+                ${combinedHtml}
+            </body>
+        </html>
+    `);
+
+    // Ensure the document is fully loaded before printing
+    printWindow.document.close();
+    printWindow.onload = function () {
+        printWindow.print();
+        printWindow.close(); // Close the window after printing
+    };
+}
+
+function saveGroupedChanges(grade) {
+    const table = document.getElementById(`groupedTable-${grade}`);
+    const rows = table.querySelectorAll("tbody tr");
+
+    // Update learners list based on grouped table edits
+    rows.forEach(row => {
+        const cells = row.querySelectorAll("td");
+        const admissionNumber = cells[6].textContent;
+
+        const learnerIndex = learners.findIndex(l => l.admissionNumber === admissionNumber);
+        if (learnerIndex !== -1) {
+            learners[learnerIndex] = {
+                photo: cells[1].querySelector('img').src,
+                name: cells[2].textContent.trim(),        
+                gender: cells[3].textContent.trim(),
+                grade: cells[4].textContent.trim(),
+                age: parseInt(cells[5].textContent.trim()),
+                phone: cells[6].textContent.trim(),
+                admissionNumber: cells[7].textContent.trim()
+            };
+        }
+    });
+
+    // Save updates to localStorage
+    localStorage.setItem('learners', JSON.stringify(learners));
+    alert(`Changes for Grade ${grade} have been saved successfully.`);
+}
+function updateMarksTable() {
+    // Sort the marks by totalMarks in descending order
+    marks.sort((a, b) => b.totalMarks - a.totalMarks);
+
+    let subjectTotals = Array(9).fill(0); // Initialize totals for each subject
+    let totalMarksSum = 0; // To accumulate total marks for average calculation
+
+    marksList.innerHTML = marks.map((mark, index) => {
+        // Update totals for each subject
+        mark.scores.forEach((score, idx) => subjectTotals[idx] += score);
+        totalMarksSum += mark.totalMarks;
+
+        return `
+            <tr>
+                <td>${index + 1}</td> <!-- Row Number -->
+                <td>${mark.learner}</td>
+                <td>${mark.grade}</td>
+                ${mark.scores.map(score => `<td>${score}</td><td>${getLevel(score)}</td>`).join('')}
+                <td style="font-weight:bold; border: 2px solid black;">${mark.totalMarks}</td>
+                <td><button onclick="deleteMarks(${index})">Delete</button></td>
+            </tr>
+        `;
+    }).join("");
+
+    // Calculate averages and add totals to the table
+    const averages = subjectTotals.map(total => (total / marks.length).toFixed(2));
+    const totalRow = `
+        <tr>
+            <td colspan="3" style="font-weight:bold;">Total</td>
+            ${subjectTotals.map(total => `<td style="font-weight:bold;">${total}</td><td></td>`).join('')}
+            <td style="font-weight:bold;">${totalMarksSum}</td>
+        </tr>`;
+    const averageRow = `
+        <tr>
+            <td colspan="3" style="font-weight:bold;">Average</td>
+            ${averages.map(avg => `<td style="font-weight:bold;">${avg}</td><td></td>`).join('')}
+            <td style="font-weight:bold;">${(totalMarksSum / marks.length).toFixed(2)}</td>
+        </tr>`;
+
+    marksList.innerHTML += totalRow + averageRow;
+}
+
+     
+        function deleteMarks(index) {
+            marks.splice(index, 1);  // Remove the mark entry at the specified index
+            updateMarksTable();  // Update the table to reflect changes
+        }
+
+        function getLevel(score) {
+            if (score >= 75) return 4;
+            if (score >= 50) return 3;
+            if (score >= 25) return 2;
+            if (score < 25) return 1;
+            return 0; // Default level if score is invalid
+       
+}
+function viewArchives() {
+    // Retrieve archived marks from localStorage
+    const archivedMarks = JSON.parse(localStorage.getItem("archivedMarks")) || [];
+
+    if (archivedMarks.length === 0) {
+        alert("No archived marks available.");
+        return;
+    }
+
+    // Group marks by grade
+    const marksByGrade = archivedMarks.reduce((acc, mark) => {
+        if (!acc[mark.grade]) {
+            acc[mark.grade] = [];
+        }
+        acc[mark.grade].push(mark);
+        return acc;
+    }, {});
+
+    // Initialize the HTML for the View Archives section
+    let archivedHtml = `<button onclick="printArchivedMarks()">Print Archived Marks</button>`;
+
+    // Iterate through each grade and create a separate table
+    for (const [grade, marks] of Object.entries(marksByGrade)) {
+        const subjectTotals = Array(9).fill(0); // Assuming 9 subjects
+        let totalMarksSum = 0;
+
+ archivedHtml += `
+            <div>
+                <h3>Grade: ${grade}</h3>
+                <button onclick="printArchivedTable('${grade}')">Print Grade ${grade}</button>
+                <table id="archivedTable-${grade}" class="report-table">
+                    <thead>
+                        <tr>
+                         <th>No.</th>
+                            <th>Learner</th>
+                            <th>Grade</th>
+                            <th>Eng</th><th>Lev</th>
+                            <th>Math</th><th>Lev</th>
+                            <th>Pre-Tech</th><th>Lev</th>
+                            <th>Kisw</th><th>Lev</th>
+                            <th>Scie</th><th>Lev</th>
+                            <th>Sst</th><th>Lev</th>
+                            <th>Agric</th><th>Lev</th>
+                            <th>Cre</th><th>Lev</th>
+                            <th>C/A</th><th>Lev</th>
+                            <th>Total Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+        `;
+
+        marks.forEach((mark, index) => {
+            // Update totals for each subject and overall
+            mark.scores.forEach((score, subjectIndex) => {
+                subjectTotals[subjectIndex] += score;
+            });
+            totalMarksSum += mark.totalMarks;
+
+            // Append each learner's row
+            archivedHtml += `
+                <tr>
+<td>${index + 1}</td> <!-- Row Number -->
+                    <td>${mark.learner}</td>
+                    <td>${mark.grade}</td>
+                    ${mark.scores.map((score, subjectIndex) => `
+                        <td>${score}</td>
+                        <td>${getLevel(score)}</td>
+                    `).join('')}
+                    <td style="font-weight:bold;">${mark.totalMarks}</td>
+                    <td><button onclick="deleteArchivedMark(${index})">Delete</button></td>
+                </tr>
+            `;
+        });
+
+        // Calculate averages
+        const averages = subjectTotals.map(total => (total / marks.length).toFixed(2));
+        const overallAverageMarks = (totalMarksSum / marks.length).toFixed(2);
+
+        // Add Totals and Averages rows
+        archivedHtml += `
+            <tr>
+                <td colspan="2"><strong>Total</strong></td>
+                ${subjectTotals
+                    .map((total) => `<td><strong>${total}</strong></td><td></td>`)
+                    .join("")}
+                <td><strong>${totalMarksSum}</strong></td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>Average</strong></td>
+                ${averages
+                    .map((avg) => `<td><strong>${avg}</strong></td><td></td>`)
+                    .join("")}
+                <td></td>
+            </tr>
+        `;
+        archivedHtml += "</tbody></table><hr>";
+    }
+
+    // Display the archived marks by grade
+    document.getElementById("archivedMarksList").innerHTML = archivedHtml;
+    document.getElementById("archivesSection").style.display = "block"; // Show the archives section
+}
+function deleteArchivedMark(index) {
+    // Retrieve the archived marks from localStorage
+    let archivedMarks = JSON.parse(localStorage.getItem("archivedMarks")) || [];
+
+    // Remove the selected mark
+    archivedMarks.splice(index, 1);
+
+    // Save the updated archived marks back to localStorage
+    localStorage.setItem("archivedMarks", JSON.stringify(archivedMarks));
+
+    // Refresh the archives view
+    viewArchives();
+
+    // Notify the user
+    alert("Archived mark deleted successfully.");
+}
+function printArchivedMarks () {
+    // Retrieve information from the champions form fields
+    const schoolName = document.getElementById("schoolName").value || "School Name";
+    const gradeLevel = document.getElementById("gradeLevel").value || "Grade";
+    const year = document.getElementById("year").value || "Year";
+    const term = document.getElementById("term").value || "Term";
+
+    // Get the content for Archived Marks
+    const reportDiv = document.getElementById("report");
+    const performanceHtml = reportDiv.innerHTML;
+
+    // Open a new window to format and print the archived marks content
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Archived Marks</title>
+                <style>
+                    body { font-family: Arial, sans-serif; }
+                    .report-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 20px;
+                    }
+                    .report-table th, .report-table td {
+                        border: 2px solid black;
+                        padding: 10px;
+                        text-align: center;
+                    }
+                    .header-info {
+                        margin-bottom: 20px;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+  </div>
+      
+                    <p>School: ${schoolName}</p>
+                    <p>Grade: ${gradeLevel}</p>
+                    <p>Year: ${year}</p>
+                    <p>Term: ${term}</p>
+                </div>
+                ${archivedMarksList.innerHTML}
+            </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+}
+function deleteArchivedMark(index) {
+    // Retrieve the archived marks from localStorage
+    let archivedMarks = JSON.parse(localStorage.getItem("archivedMarks")) || [];
+
+    // Remove the selected mark
+    archivedMarks.splice(index, 1);
+
+    // Save the updated archived marks back to localStorage
+    localStorage.setItem("archivedMarks", JSON.stringify(archivedMarks));
+
+    // Refresh the archives view
+    viewArchives();
+
+    // Notify the user
+    alert("Archived mark deleted successfully.");
+}
+
+
+function downloadArchivedMarks() {
+    const archivedMarksList = document.getElementById("archivedMarksList");
+    
+    // Check if archived marks are available to download
+    if (!archivedMarksList.innerHTML) {
+        alert("No archived marks to download.");
+        return;
+    }
+
+    // Use html2pdf to download the archived marks as a PDF
+    html2pdf().from(archivedMarksList).save('Archived_Marks.pdf');
+}
+
+        function updateLearnerSelect() {
+            learnerSelect.innerHTML = learners.map(learner => `<option>${learner.name}</option>`).join("");
+        }
+
+        function updateBulkGradeSelect() {
+            const grades = [...new Set(learners.map(learner => learner.grade))];
+            bulkGradeSelect.innerHTML = grades.map(grade => `<option>${grade}</option>`).join("");
+        }
+
+        function populateLearnerSuggestions() {
+            const learnerList = document.getElementById("learnerList");
+            learnerList.innerHTML = learners.map(learner => `<option value="${learner.name}">`).join("");
+        }
+
+        function searchLearner() {
+            const query = document.getElementById("searchLearner").value.toLowerCase();
+            const rows = learnersList.getElementsByTagName("tr");
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                const name = cells[1]?.textContent.toLowerCase();
+                rows[i].style.display = name.includes(query) ? "" : "none";
+            }
+        }
+
+        function searchMarks() {
+            const query = document.getElementById("searchMarks").value.toLowerCase();
+            const rows = marksList.getElementsByTagName("tr");
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                const learnerName = cells[0]?.textContent.toLowerCase();
+                rows[i].style.display = learnerName.includes(query) ? "" : "none";
+            }
+        }
+
+        function toggleLearnersTable() {
+            const table = document.querySelector('.learners-table');
+            table.style.display = table.style.display === 'none' ? 'table' : 'none';
+        }
+// Example of the marks submission logic
+document.getElementById("marksForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const learnerName = document.getElementById("learnerSelect").value;
+    const grade = document.getElementById("marksGrade").value;
+    const scores = [
+        parseInt(document.getElementById("english").value),
+        parseInt(document.getElementById("math").value),
+        parseInt(document.getElementById("preTech").value),
+        parseInt(document.getElementById("kiswahili").value),
+        parseInt(document.getElementById("science").value),
+        parseInt(document.getElementById("social").value),
+        parseInt(document.getElementById("agriculture").value),
+        parseInt(document.getElementById("religion").value),
+        parseInt(document.getElementById("art").value)
+    ];
+
+    if (scores.some(score => score < 0 || score > 100)) {
+        alert("Please enter valid scores between 0 and 100.");
+        return;
+    }
+
+    // Calculate total marks and performance levels
+    const totalMarks = scores.reduce((acc, score) => acc + score, 0);
+    const averageMarks = (totalMarks / scores.length).toFixed(2);
+
+    // Levels based on scores (each subject score determines a level)
+    const levels = scores.map(score => getLevel(score));
+
+    // Create marks entry
+    const markEntry = {
+        learner: learnerName,
+        grade: grade,
+        scores: scores,
+        totalMarks: totalMarks,
+        averageMarks: averageMarks,
+        levels: levels
+    };
+
+    // Save marks to Local Storage or other storage
+    let marks = JSON.parse(localStorage.getItem("marks")) || [];
+    marks.push(markEntry);
+    localStorage.setItem("marks", JSON.stringify(marks));
+
+    // Update the marks table
+    updateMarksTable();
+
+    this.reset(); // Reset the form
+});
+
+// Function to determine level based on score
+function getLevel(score) {
+    if (score >= 75) return 4; // Excellent
+    if (score >= 50) return 3; // Good
+    if (score >= 25) return 2; // Needs Improvement
+    return 1; // Poor
+}
+
+function removeLearner(index) {
+    learners.splice(index, 1); // Remove the learner at the specified index
+    localStorage.setItem('learners', JSON.stringify(learners)); // Update local storage
+    updateLearnersTable(); // Re-render the table after removing the learner
+}
+function showSubjectPerformance() {
+    const subjectScores = {};
+    marks.forEach(mark => {
+        mark.scores.forEach((score, index) => {
+            const subject = [
+                'English', 'Mathematics', 'Pre-Technical Studies', 
+                'Kiswahili', 'Integrated Science', 'Social Studies', 
+                'Agriculture', 'Religious Education', 'Creative Art'
+            ][index];
+            if (!subjectScores[subject]) {
+                subjectScores[subject] = { total: 0, count: 0 };
+            }
+            subjectScores[subject].total += score;
+            subjectScores[subject].count++;
+        });
+    });
+
+    const meanScores = Object.keys(subjectScores).map(subject => {
+        const mean = (subjectScores[subject].total / subjectScores[subject].count).toFixed(2);
+        return { subject, mean };
+    }).sort((a, b) => b.mean - a.mean);
+
+    let performanceHtml = '<h3>Subject Performance</h3><table class="report-table"><thead><tr><th>No.</th><th>Subject</th><th>Mean Score</th></tr></thead><tbody>';
+    let number = 1; // Add numbering
+    meanScores.forEach(({ subject, mean }) => {
+        performanceHtml += `<tr><td>${number++}</td><td>${subject}</td><td>${mean}</td></tr>`;
+    });
+    performanceHtml += '</tbody></table>';
+
+    const reportDiv = document.getElementById("report");
+    reportDiv.innerHTML = performanceHtml;
+     
+        }
+// Toggle visibility of the Registered Learners box
+function toggleRegisteredLearners() {
+    const section = document.getElementById('registeredLearnersBox');
+    section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+}
+// Toggle visibility of the View Archives
+function toggleViewArchives() {
+    const section = document.getElementById('viewArchives');
+    section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+}
+        function groupMarksByGrade() {
+            const groupedMarks = marks.reduce((acc, mark) => {
+                if (!acc[mark.grade]) {
+                    acc[mark.grade] = [];
+                }
+                acc[mark.grade].push(mark);
+                return acc;
+            }, {});
+
+            let groupedHtml = '';
+            for (const grade in groupedMarks) {
+                groupedHtml += `<h3>Grade: ${grade}</h3><button onclick="printGroupedMarks('${grade}')">Print ${grade} Marks</button><table class="report-table"><thead><tr><th>Learner</th><th>Grade</th>${Array(9).fill('<th>Subject</th><th>Level</th>').join('')}<th>Total Marks</th></tr></thead><tbody>`;
+                const subjectTotals = Array(9).fill(0);
+
+                groupedMarks[grade].forEach(mark => {
+                    groupedHtml += `<tr><td>${mark.learner}</td><td>${mark.grade}</td>${mark.scores.map(score => `<td>${score}</td><td>${getLevel(score)}</td>`).join('')}<td>${mark.totalMarks}</td></tr>`;
+                    mark.scores.forEach((score, index) => subjectTotals[index] += score);
+                });
+
+                // Calculate totals and averages
+                const averages = subjectTotals.map(total => (total / groupedMarks[grade].length).toFixed(2));
+                groupedHtml += `<tr><td colspan="2"><strong>Total</strong></td>${subjectTotals.map(total => `<td><strong>${total}</strong></td><td></strong></td>`).join('')}<td><strong></strong></td></tr>`;
+                groupedHtml += `<tr><td colspan="2"><strong>Average</strong></td>${averages.map(avg => `<td><strong>${avg}</strong></td><td></td>`).join('')}<td><strong></strong></td></tr>`;
+                groupedHtml += '</tbody></table>';
+            }
+            groupedLearners.innerHTML = groupedHtml; // Update the grouped learners div
+        }
+    function clearForm() {
+    document.getElementById("learnerForm").reset();
+}
+
+// Then modify the event listener to call this function:
+document.getElementById("learnerForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    // ... code to add learner
+    clearForm(); // Clears form fields
+});
+
+function printSubjectPerformance() {
+    // Retrieve information from the champions form fields
+    const schoolName = document.getElementById("schoolName").value || "School Name";
+    const gradeLevel = document.getElementById("gradeLevel").value || "Grade";
+    const year = document.getElementById("year").value || "Year";
+    const term = document.getElementById("term").value || "Term";
+
+    // Get the content for Subject Performance
+    const reportDiv = document.getElementById("report");
+    const performanceHtml = reportDiv.innerHTML;
+
+    // Open a new window to format and print the performance content
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Subject Performance</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+                    .header-info {
+                        text-align: left;
+                        margin-bottom: 20px;
+                        font-weight: bold;
+                    }
+                    .report-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+                    .report-table th, .report-table td {
+                        border: 2px solid black;
+                        padding: 10px;
+                        text-align: center;
+                    }
+                    .stamp {
+                        border: 2px solid blue;
+                        color: blue;
+                        text-align: center;
+                        width: 200px;
+                        height: 70px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 10px auto;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="header-info">
+                    <p>School: ${schoolName}</p>
+                    <p>Grade: ${gradeLevel}</p>
+                    <p>Year: ${year}</p>
+                    <p>Term: ${term}</p>
+                </div>
+                ${performanceHtml}
+                <div class="stamp">Nachu Junior Highschool<br>P.O BOX 561-00902 Kikuyu</div>
+            </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+}
+// Toggle visibility of the Bulk Report Generation section
+function toggleBulkReportGeneration() {
+    const section = document.getElementById('bulkReportGeneration');
+    section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+}
+
+// Toggle visibility of the Marks Table section
+function toggleMarksTable() {
+    const section = document.getElementById('marksTableSection');
+    section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+}
+
+        function printGroupedMarks(grade) {
+            const groupedHtml = document.getElementById("groupedLearners").innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Grouped Marks - ${grade}</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                            }
+                            .report-table {
+                                width: 100%;
+                                border-collapse: collapse;
+                            }
+                            .report-table th, .report-table td {
+                                border: 2px solid black;
+                                padding: 8px;
+                                text-align: center;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Grouped Marks for Grade: ${grade}</h1>
+                        ${groupedHtml}
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+}
+function promoteLearners() {
+    learners.forEach(learner => {
+        // Extract the current grade number and stream (e.g., "7A" becomes grade 7 and stream "A")
+        const gradeMatch = learner.grade.match(/^(\d+)([A-Z]*)$/);
+        if (gradeMatch) {
+            const currentGrade = parseInt(gradeMatch[1]);
+            const stream = gradeMatch[2];
+
+            // Promote only if the learner is in grades 7, 8, or 9
+            if (currentGrade >= 7 && currentGrade <= 9) {
+                learner.grade = (currentGrade + 1) + stream;
+            }
+        }
+    });
+
+    // Save the updated list of learners to local storage and refresh the displayed list
+    localStorage.setItem('learners', JSON.stringify(learners));
+    updateLearnersTable();
+    alert("Eligible learners have been promoted to the next grade!");
+}
+// Toggle visibility of the Junior School Marks Entry Section
+function toggleJuniorMarksEntry() {
+    const section = document.getElementById('juniorMarksEntrySection');
+    section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+}
+
+// Toggle visibility of the Register Learner form
+function toggleRegisterLearner() {
+    const section = document.getElementById('registerLearnerSection');
+    section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+}
+
+// Toggle visibility of the Actions For Junior School section
+function toggleJuniorSchoolActions() {
+    const section = document.getElementById('juniorSchoolActions');
+    section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+}
+
+        function generateReportForLearner() {
+            const selectedLearner = learnerSelect.value;
+            const learnerData = marks.find(mark => mark.learner === selectedLearner);
+
+            const reportContainer = `
+                <div class="header">
+                    <h2>Nachu Junior Highschool Assessment Report</h2>
+                    <h3>Ministry Of Education Science And Technology</h3>            
+                    <h4>P.O BOX 561-00902 Kikuyu </h4>
+                </div>
+                <div class="report-details">
+                    Year: 2024<br>
+                    Term: 3<br>
+                    Grade: ${learnerData.grade}<br>
+                    Learner's Name: ${selectedLearner}
+                </div>
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Scores</th>
+                            <th>Levels</th>
+                            <th>Subject Teacher</th>
+                            <th>Signature</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${generateSubjectRows(learnerData)}
+                    </tbody>
+                </table>
+                <div class="total-marks">
+                   <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="marksList"></tbody>
+        </table>
+    </div>
+             <div class="comment-section">
+    Teacher Comments On Competencies Achieved/Acquisition Of Values:<br>
+    <em>Actively participates in class discussions.</em>
+</div>
+
+<div class="comment-section">
+    Learner's General Performance Level:<br>
+    <strong>Meeting expectations</strong>
+</div>
+
+<div class="signature-section">
+    Closing Date: 24-10-2024<br>
+    Opening Date: 06-01-2025<br>
+    Class Teacher Signature: _______________<br>
+    Principal Signature: _______________<br>
+    Official Stamp:
+    <div class="stamp">
+        Nachu Junior School<br>
+        P.O BOX 561-00902 Kikuyu
+    </div>
+</div>
+
+        <div style="page-break-after: always;"></div>
+    `;
+
+    // Display the report content in the report div
+    document.getElementById("report").innerHTML = reportContent;
+}
+
+        function getComment(totalMarks) {
+            if (totalMarks >= 1 && totalMarks <= 225) return "Displays self-discipline however Should put extra effort to achieve higher scores.";
+            if (totalMarks >= 226 && totalMarks <= 449) return "Willing to help his peers; however,should focus on improving his overall performance.";
+            if (totalMarks >= 450 && totalMarks <= 675) return "Actively participates in class discussions and takes on various roles in work groups as needed.";
+            if (totalMarks >= 676 && totalMarks <= 900) return "Shown consistent improvement and tackles classroom assignments, tasks, and group work well.";
+            return "";
+        }
+
+        function getPerformanceLevel(totalMarks) {
+            if (totalMarks >= 1 && totalMarks <= 225) return "Below expectations";
+            if (totalMarks >= 226 && totalMarks <= 449) return "Approaching expectations";
+            if (totalMarks >= 450 && totalMarks <= 675) return "Meeting expectations";
+            if (totalMarks >= 676 && totalMarks <= 900) return "Exceeding expectations";
+            return "";
+        }
+function generateBulkReports() {
+    const selectedGrade = bulkGradeSelect.value;
+    const learnersInGrade = marks.filter(mark => mark.grade === selectedGrade);
+
+    const bulkReportsContainer = learnersInGrade.map(learnerData => {
+        const learner = learners.find(l => l.name === learnerData.learner);
+        const photo = learner && learner.photo ? `<img src="${learner.photo}" alt="Photo" style="width:70px; height:60px; border-radius:50%;">` : 'No Photo Available';
+
+        return `
+            <div class="header">
+                <h2>Nachu Junior Highschool Assessment Report</h2>
+                <h3>P.O BOX 561-00902 Kikuyu </h3>
+                <h4>Ministry Of Education Science And Technology</h4> 
+            </div>
+            <div class="report-details">
+                Year: 2024<br>
+                Term: ...<br>
+                Grade: ${learnerData.grade}<br>
+                Learner's Name: ${learnerData.learner}
+            </div>
+            <div>
+                ${photo}
+            </div>
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Scores</th>
+                        <th>Levels</th>
+                        <th>Subject Teacher</th>
+                        <th>Signature</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${generateSubjectRows(learnerData)}
+                </tbody>
+            </table>
+            <div class="total-marks">
+                <strong>Total Marks: ${learnerData.totalMarks}</strong>
+            </div>
+            <div class="comment-section">
+                Teacher Comments On Competencies Achieved/Acquisition Of Values: <br>
+                ${getComment(learnerData.totalMarks)}
+            </div>
+            <div class="comment-section">
+                Learner's General Performance Level: <br>
+                <strong>${getPerformanceLevel(learnerData.totalMarks)}</strong>
+            </div>
+            <div>
+                Closing Date: 24-10-2024<br>
+                Opening Date: 06-01-2025<br>
+                Class Teacher Signature: _______________<br>
+                Principal Signature: _______________<br>
+                Official Stamp: <div class="stamp">
+                    Nachu Junior School<br>
+                    P.O BOX 561-00902 Kikuyu
+                </div>
+            </div>
+            <div style="page-break-after: always;"></div>
+        `;
+    }).join("");
+
+    const reportDiv = document.getElementById("report");
+    reportDiv.innerHTML = bulkReportsContainer;
+
+        }
+
+        function generateSubjectRows(learnerData) {
+            const subjects = ['English', 'Mathematics', 'Pre-Technical Studies', 'Kiswahili', 'Integrated Science', 'Social Studies', 'Agriculture', 'Religious Education', 'Creative Art'];
+            return subjects.map((subject, index) => `
+                <tr>
+                    <td>${subject}</td>
+                    <td>${learnerData.scores[index]}</td>
+                    <td>${getLevel(learnerData.scores[index])}</td>
+                    <td>${getSubjectTeacher(subject)}</td>
+                    <td>______</td>
+                </tr>
+            `).join('');
+        }
+
+        function getSubjectTeacher(subject) {
+            const teachers = {
+                'English': 'Madam Agnes',
+                'Mathematics': 'Madam Esther',
+                'Pre-Technical Studies': 'Mr.Sironga',
+                'Kiswahili': 'Mr.Sironga',
+                'Integrated Science': 'Madam Esther',
+                'Social Studies': 'Mr.Sironga',
+                'Agriculture': 'Madam Agnes',
+                'Religious Education': 'Madam Joyce',
+                'Creative Art': 'Mr.Sironga'
+            };
+            return teachers[subject] || 'N/A';
+        }
+function printAssessmentReport() {
+    const selectedLearnerName = document.getElementById("learnerSelect").value;
+    const learner = learners.find(l => l.name === selectedLearnerName);
+    const learnerPhoto = learner && learner.photo ? learner.photo : 'path/to/default-photo.jpg';
+
+    const reportDiv = document.getElementById("report");
+    const assessmentReportHtml = reportDiv.innerHTML;
+
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Assessment Report</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+                    .report-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+                    .report-table th, .report-table td {
+                        border: 2px solid black;
+                        padding: 10px;
+                        text-align: center;
+                    }
+                    .learner-photo-container {
+                        position: relative;
+                        margin-bottom: 20px;
+                        text-align: center;
+                    }
+                    .learner-photo {
+                        width: 70px;
+                        height: 60px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                    .stamp {
+                        border: 2px solid blue;
+                        color: blue;
+                        width: 190px;
+                        height: 70px;
+                        display: flex;
+                        align-items: left;
+                        justify-content: center;
+                        margin: 8px auto;
+                        text-align: center;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="learner-photo-container">
+                    <img src="${learnerPhoto}" alt="Learner Photo" class="learner-photo">
+                </div>
+                ${assessmentReportHtml}
+                <div class="stamp">Nachu Junior School<br>P.O BOX 561-00902 Kikuyu</div>
+            </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+
+}
+     function printRegisteredLearners() {
+    // Retrieve input values from the form
+    const schoolName = document.getElementById("schoolName").value || "School Name";
+    const year = document.getElementById("year").value || "Year";
+   
+    const term = document.getElementById("term").value || "Term";
+
+    // Generate the table content for registered learners
+    const tableHtml = `
+        <table class="learners-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Grade</th>
+                    <th>Age</th>
+                    <th>Parent Phone No</th>
+                    <th>Admission Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${learners.map((learner, index) => `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td><img src="${learner.photo}" alt="Photo" width="50" height="50"></td>
+                        <td>${learner.name}</td>
+                        <td>${learner.grade}</td>
+                        <td>${learner.age}</td>
+                        <td>${learner.phone}</td>
+                        <td>${learner.admissionNumber}</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+    `;
+
+    // Open a new window for printing
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Registered Learners</title>
+                <style>
+                    body { font-family: Arial, sans-serif; }
+                    .header-info { text-align: left; margin-bottom: 20px; font-weight: bold; }
+                    .learners-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+                    .learners-table th, .learners-table td { border: 2px solid black; padding: 10px; text-align: center; }
+                </style>
+            </head>
+            <body>
+                <div class="header-info">
+                    <p>School: ${schoolName}</p>
+                    <p>Year: ${year}</p>
+                    <p>Term: ${term}</p>
+                </div>
+                ${tableHtml}
+            </body>
+        </html>
+    `);
+
+    printWindow.document.close();
+    printWindow.print();
+
+
+        }
+
+ function printMarksTable() {
+    const totalMarksSum = marks.reduce((acc, mark) => acc + mark.totalMarks, 0);
+    const subjectTotals = Array(9).fill(0); // Assuming 9 subjects
+    marks.forEach(mark => {
+        mark.scores.forEach((score, index) => subjectTotals[index] += score);
+    });
+
+    const averages = subjectTotals.map(total => (total / marks.length).toFixed(2));
+    const overallAverage = (totalMarksSum / marks.length).toFixed(2); // Overall average of total marks
+
+    // Retrieve dynamic information from input fields
+    const schoolName = document.getElementById("schoolName").value || "School Name";
+    const gradeLevel = document.getElementById("gradeLevel").value || "Grade";
+    const year = document.getElementById("year").value || "Year";
+    const term = document.getElementById("term").value || "Term";
+
+    // Retrieve the content for Marks Table 
+    const reportDiv = document.getElementById("report");
+    const rankingsHtml = reportDiv.innerHTML;
+
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Marks Table</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+                    .report-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+                    .report-table th, .report-table td {
+                        border: 3px solid black;
+                        padding: 10px;
+                        text-align: center;
+                    }
+                    .stamp {
+                        border: 2px solid blue;
+                        color: blue;
+                        width: 200px;
+                        height: 70px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 10px auto;
+                        text-align: center;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                   <p>School: ${schoolName}</p>
+                    <p>Grade: ${gradeLevel}</p>
+                    <p>Year: ${year}</p>
+                    <p>Term: ${term}</p>
+                </div>
+                <table class="report-table">
+                    <thead>
+                        <tr>
+                            <th>Learner</th>
+                            <th>Grade</th>
+                            <th>English</th><th>Level</th>
+                            <th>Mathematics</th><th>Level</th>
+                            <th>Pre-Tech</th><th>Level</th>
+                            <th>Kiswahili</th><th>Level</th>
+                            <th>Science</th><th>Level</th>
+                            <th>Social</th><th>Level</th>
+                            <th>Agriculture</th><th>Level</th>
+                            <th>Religion</th><th>Level</th>
+                            <th>Art</th><th>Level</th>
+                            <th>Total Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${marks.map(mark => `
+                            <tr>
+                                <td>${mark.learner}</td>
+                                <td>${mark.grade}</td>
+                                ${mark.scores.map(score => `<td>${score}</td><td>${getLevel(score)}</td>`).join('')}
+                                <td style="font-weight:bold; border: 3px solid black;">${mark.totalMarks}</td>
+                            </tr>
+                        `).join('')}
+                        <tr>
+                            <td colspan="2" style="font-weight:bold;">Total</td>
+                            ${subjectTotals.map(total => `<td style="font-weight:bold;">${total}</td><td></td>`).join('')}
+                            <td style="font-weight:bold;">${totalMarksSum}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="font-weight:bold;">Average</td>
+                            ${averages.map(avg => `<td style="font-weight:bold;">${avg}</td><td></td>`).join('')}
+                            <td style="font-weight:bold;">${overallAverage}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Append the stamp after printing the table -->
+                <div class="stamp">Nachu Junior High School<br>P.O BOX 561-00902 Kikuyu</div>
+            </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+}
+function printGroupedTable(grade) {
+    const schoolName = document.getElementById("schoolName").value || "School Name";
+    const year = document.getElementById("year").value || "Year";
+    const term = document.getElementById("term").value || "Term";
+
+    const table = document.getElementById(`groupedTable-${grade}`).outerHTML;
+
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Grouped Learners for Grade ${grade}</title>
+                <style>
+                    body { font-family: Arial, sans-serif; }
+                    .header-info { text-align: left; margin-bottom: 20px; font-weight: bold; }
+                    .learners-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+                    .learners-table th, .learners-table td { border: 2px solid black; padding: 10px; text-align: center; }
+                </style>
+            </head>
+            <body>
+                <div class="header-info">
+                    <p>School: ${schoolName}</p>
+                    <p>Grade: ${grade}</p>
+                    <p>Year: ${year}</p>
+                    <p>Term: ${term}</p>
+                </div>
+                ${table}
+            </body>
+        </html>
+    `);
+
+    printWindow.document.close();
+    printWindow.print();
+
+     
+        }
+function showSubjectChampions() {
+    const champions = marks.reduce((acc, mark) => {
+        mark.scores.forEach((score, index) => {
+            const subject = [
+                'English', 'Mathematics', 'Pre-Technical Studies', 
+                'Kiswahili', 'Integrated Science', 'Social Studies', 
+                'Agriculture', 'Religious Education', 'Creative Art'
+            ][index];
+            if (!acc[subject] || score > acc[subject].score) {
+                acc[subject] = { name: mark.learner, score };
+            }
+        });
+        return acc;
+    }, {});
+
+    let championsHtml = '<h3>Subject Champions</h3><table class="learners-table"><thead><tr><th>No.</th><th>Subject</th><th>Champion</th><th>Score</th></tr></thead><tbody>';
+    let number = 1; // Add numbering
+    for (const subject in champions) {
+        championsHtml += `
+            <tr>
+                <td>${number++}</td>
+                <td>${subject}</td>
+                <td>${champions[subject].name}</td>
+                <td>${champions[subject].score}</td>
+            </tr>
+        `;
+    }
+    championsHtml += '</tbody></table>';
+
+    const reportDiv = document.getElementById("report");
+    reportDiv.innerHTML = championsHtml;
+
+    // Start fireworks
+    startFireworks();
+     
+        }
+
+        function showSubjectRanking() {
+            const rankings = marks.reduce((acc, mark) => {
+                mark.scores.forEach((score, index) => {
+                    const subject = ['English', 'Mathematics', 'Pre-Technical Studies', 'Kiswahili', 'Integrated Science', 'Social Studies', 'Agriculture', 'Religious Education', 'Creative Art'][index];
+                    if (!acc[subject]) {
+                        acc[subject] = [];
+                    }
+                    acc[subject].push({ name: mark.learner, score });
+                });
+                return acc;
+            }, {});
+
+            for (const subject in rankings) {
+                rankings[subject].sort((a, b) => b.score - a.score);
+            }
+
+            let rankingsHtml = '<h3>Subject Rankings</h3>';
+            for (const subject in rankings) {
+                rankingsHtml += `<h4>${subject}</h4><table class="learners-table"><thead><tr><th>Rank</th><th>Name</th><th>Score</th></tr></thead><tbody>`;
+                rankings[subject].forEach((entry, index) => {
+                    rankingsHtml += `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${entry.name}</td>
+                            <td>${entry.score}</td>
+                        </tr>
+                    `;
+                });
+                rankingsHtml += '</tbody></table>';
+            }
+
+            const reportDiv = document.getElementById("report");
+            reportDiv.innerHTML = rankingsHtml;
+        }
+
+ function printSubjectChampions() {
+    // Retrieve input values
+    const schoolName = document.getElementById("schoolName").value || "School Name";
+    const gradeLevel = document.getElementById("gradeLevel").value || "Grade";
+    const year = document.getElementById("year").value || "Year";
+    const term = document.getElementById("term").value || "Term";
+
+    // Generate the subject champions content
+    const reportDiv = document.getElementById("report");
+    const championsHtml = reportDiv.innerHTML;
+
+    // Open a new window for printing and inject the HTML with the input data at the top
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Subject Champions</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+                    .learners-table, .learners-table th, .learners-table td {
+                        border: 2px solid black;
+                        padding: 10px;
+                        text-align: center;
+                        border-collapse: collapse;
+                    }
+                    .header-info {
+                        text-align: left;
+                        margin-bottom: 20px;
+                        font-weight: bold;
+                    }
+                    .stamp {
+                        border: 2px solid blue;
+                        color: blue;
+                        text-align: center;
+                        width: 200px;
+                        height: 70px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 10px auto;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="header-info">
+                    <p>School: ${schoolName}</p>
+                    <p>Grade: ${gradeLevel}</p>
+                    <p>Year: ${year}</p>
+                    <p>Term: ${term}</p>
+                </div>
+                ${championsHtml}
+                <div class="stamp">Nachu Junior Highschool<br>P.O BOX 561-00902 Kikuyu</div>
+            </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+
+        }
+function deleteLearner(index) {
+    // Confirm before deleting
+    const confirmDelete = confirm("Are you sure you want to delete this learner from the registered learners list?");
+    if (!confirmDelete) return; // Exit if the user cancels
+
+    // Archive the deleted learner's data
+    const deletedLearner = registeredLearners.splice(index, 1)[0];  // Remove and get the deleted learner data
+    deletedDataArchive.push({
+        type: 'learner',
+        data: deletedLearner
+    });
+
+    // Re-render the registered learners table
+    updateRegisteredLearnersTable();
+    alert("Learner has been deleted and archived.");
+}
+function deleteMarks(index) {
+    // Confirm before deleting
+    const confirmDelete = confirm("Are you sure you want to delete this learner's marks?");
+    if (!confirmDelete) return; // Exit if the user cancels
+
+    // Archive the deleted learner's marks
+    const deletedMarks = marks.splice(index, 1)[0];  // Remove and get the deleted marks data
+    deletedDataArchive.push({
+        type: 'marks',
+        data: deletedMarks
+    });
+
+    // Re-render the marks table
+    updateMarksTable();
+    alert("Learner's marks have been deleted and archived.");
+}
+
+function viewArchivedData() {
+    if (deletedDataArchive.length === 0) {
+        alert("No deleted data available.");
+        return;
+    }
+
+    let archivedHtml = "<h3>Archived Deleted Data</h3>";
+
+    deletedDataArchive.forEach((deletedEntry, index) => {
+        if (deletedEntry.type === 'marks') {
+            const mark = deletedEntry.data;
+            archivedHtml += `
+                <div>
+                    <p><strong>Marks Archive #${index + 1}</strong></p>
+                    <p>Learner: ${mark.learner}</p>
+                    <p>Grade: ${mark.grade}</p>
+                    <p>Scores: ${mark.scores.join(', ')}</p>
+                    <p>Total Marks: ${mark.totalMarks}</p>
+                    <hr>
+                </div>
+            `;
+        } else if (deletedEntry.type === 'learner') {
+            const learner = deletedEntry.data;
+            archivedHtml += `
+                <div>
+                    <p><strong>Learner Archive #${index + 1}</strong></p>
+                    <p>Name: ${learner.name}</p>
+                    <p>Grade: ${learner.grade}</p>
+                    <hr>
+                </div>
+            `;
+        }
+    });
+
+    // Display the archived data
+    document.getElementById("archivedDataContainer").innerHTML = archivedHtml;
+}
+function clearArchivedData() {
+    // Confirm before clearing the archive
+    const confirmClear = confirm("Are you sure you want to permanently clear all archived deleted data?");
+    if (confirmClear) {
+        deletedDataArchive = [];  // Clear the archive
+        alert("Archived data has been cleared.");
+        document.getElementById("archivedDataContainer").innerHTML = "";  // Clear displayed archive
+    }
+}
+
+function printSubjectRanking() {
+    // Retrieve dynamic information from input fields
+    const schoolName = document.getElementById("schoolName").value || "School Name";
+    const gradeLevel = document.getElementById("gradeLevel").value || "Grade";
+    const year = document.getElementById("year").value || "Year";
+    const term = document.getElementById("term").value || "Term";
+
+    // Retrieve the content for Subject Rankings
+    const reportDiv = document.getElementById("report");
+    const rankingsHtml = reportDiv.innerHTML;
+
+    // Open a new window to format and print the rankings content with visible borders
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+        <html>
+            <head>
+                <title>Subject Rankings</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                    }
+                    .header-info {
+                        text-align: left;
+                        margin-bottom: 20px;
+                        font-weight: bold;
+                    }
+                    .learners-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                    }
+                    .learners-table th, .learners-table td {
+                        border: 2px solid black; /* Visible table borders for rows and columns */
+                        padding: 10px;
+                        text-align: center;
+                    }
+                    .stamp {
+                        border: 2px solid blue;
+                        color: blue;
+                        text-align: center;
+                        width: 200px;
+                        height: 70px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 10px auto;
+                        font-weight: bold;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="header-info">
+                    <p>School: ${schoolName}</p>
+                    <p>Grade: ${gradeLevel}</p>
+                    <p>Year: ${year}</p>
+                    <p>Term: ${term}</p>
+                </div>
+                ${rankingsHtml}
+                <div class="stamp">Nachu Junior Highschool<br>P.O BOX 561-00902 Kikuyu</div>
+            </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+ }
+     
+    </script>
